@@ -1,0 +1,1 @@
+export const APP_NAME = 'ADMIN_MERCADO_JUSTO'
