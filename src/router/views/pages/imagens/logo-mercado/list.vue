@@ -1,10 +1,10 @@
 <script>
 import List from '@components/common/list'
-import vSelect from '@components/common/vue-select.vue'
+// import vSelect from '@components/common/vue-select.vue'
 import { required } from '@vuelidate/validators'
 
 export default {
-  components: { List, vSelect },
+  components: { List,  },
   data() {
     return {
       fields: [
@@ -50,6 +50,7 @@ export default {
   methods: {
     onSubmit (vueInstance) {
       if (vueInstance.file == null) {
+        
         this.$bvToast.toast('Escolha um arquivo antes.', {
           autoHideDelay: 5000,
           variant: 'danger',
@@ -90,10 +91,10 @@ export default {
       const updatedData = data.data
       let found = false
       for (const item of vueInstance.items) {
-        if (item && item['primary-key'] == id) {
+        if (item && item['primary-key'] === id) {
           found = true
           for (const key in item) {
-            if (key == 'primary-key') {
+            if (key === 'primary-key') {
               item[key] = updatedData['_id']
             } else {
               item[key] = updatedData[key]
@@ -113,7 +114,7 @@ export default {
     },
     onUpdateRow (row, isTableBusy, vueInstance) {
       isTableBusy(true)
-      const index = row.index
+      // const index = row.index
       const item = row.item
       if (item['primary-key']) {
         this.$services.images.update(item['primary-key'], {
